@@ -1,8 +1,6 @@
-import { KeycloakService } from "keycloak-angular";
+import { KeycloakService } from 'keycloak-angular';
 
-export function initializeKeycloak(
-  keycloak: KeycloakService
-) {
+export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
@@ -12,8 +10,8 @@ export function initializeKeycloak(
       },
       initOptions: {
         checkLoginIframe: true,
-        checkLoginIframeInterval: 25
+        checkLoginIframeInterval: 25,
       },
-      loadUserProfileAtStartUp: true
+      loadUserProfileAtStartUp: true,
     });
 }
