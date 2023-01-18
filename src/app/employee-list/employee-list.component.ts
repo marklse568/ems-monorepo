@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Employee } from '../Employee';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { KeycloakService } from 'keycloak-angular';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,23 +11,12 @@ import { KeycloakService } from 'keycloak-angular';
 export class EmployeeListComponent {
   employees$: Observable<Employee[]>;
 
-  constructor(
-    private http: HttpClient,
-    private keycloakService: KeycloakService
-  ) {
+  constructor(private restService: RestService) {
     this.employees$ = of([]);
     this.fetchData();
   }
 
   fetchData() {
-    console.log(this.keycloakService.getKeycloakInstance().token);
-    this.employees$ = this.http.get<Employee[]>('/backend', {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set(
-          'Authorization',
-          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
-        ),
-    });
+    this.employees$ = this.restService.fetchEmployees();
   }
 }
