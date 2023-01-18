@@ -1,1 +1,7 @@
-<p>qualification-list works!</p>
+<h1>Qualifications Overview</h1>
+<button class="btn btn-primary">Add qualification</button>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let e of qualifications$ | async">
+    {{ e.designation }}
+  </li>
+</ul>

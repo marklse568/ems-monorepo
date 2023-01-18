@@ -23,6 +23,17 @@ export class RestService {
     });
   }
 
+  fetchQualifications() {
+    return this.http.get<Employee[]>('/backend/qualifications', {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set(
+          'Authorization',
+          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
+        ),
+    });
+  }
+
   getEmployee(id: number) {
     return this.http.get<Employee>(`/backend/employees/${id}`, {
       headers: new HttpHeaders()
