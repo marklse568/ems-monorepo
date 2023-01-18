@@ -13,7 +13,7 @@ export class RestService {
   ) {}
 
   fetchEmployees() {
-    return this.http.get<Employee[]>('/backend', {
+    return this.http.get<Employee[]>('/backend/employees', {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set(
@@ -24,7 +24,7 @@ export class RestService {
   }
 
   getEmployee(id: number) {
-    return this.http.get<Employee>(`/backend/${id}`, {
+    return this.http.get<Employee>(`/backend/employees/${id}`, {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set(
@@ -35,7 +35,7 @@ export class RestService {
   }
 
   addEmployee(employee: Employee) {
-    return this.http.post<Employee>('/backend', employee, {
+    return this.http.post<Employee>('/backend/employees', employee, {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set(
@@ -46,13 +46,17 @@ export class RestService {
   }
 
   editEmployee(employee: Employee) {
-    return this.http.put<Employee>(`/backend/${employee.id}`, employee, {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set(
-          'Authorization',
-          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
-        ),
-    });
+    return this.http.put<Employee>(
+      `/backend/employees/${employee.id}`,
+      employee,
+      {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set(
+            'Authorization',
+            `Bearer ${this.keycloakService.getKeycloakInstance().token}`
+          ),
+      }
+    );
   }
 }
