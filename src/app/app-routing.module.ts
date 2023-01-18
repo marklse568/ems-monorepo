@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { AuthGuard } from './guard/auth.guard';
+import { QualificationListComponent } from './qualification-list/qualification-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/employee', pathMatch: 'full' },
   {
     path: 'employee',
     component: EmployeeListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'qualification',
+    component: QualificationListComponent,
     canActivate: [AuthGuard],
   },
 ];
