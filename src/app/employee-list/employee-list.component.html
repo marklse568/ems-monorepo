@@ -2,8 +2,11 @@
 Wenn Sie in der EmployeeListComponent.ts ein gültiges Bearer-Token eintragen,
 sollten hier die Namen der in der Datenbank gespeicherten Mitarbeiter angezeigt
 werden!
+<a class="btn btn-primary" [routerLink]="['/employee/create']">Add Employee</a>
 <ul>
   <li *ngFor="let e of employees$ | async">
-    {{ e.lastName }}, {{ e.firstName }}
+    <a [routerLink]="['/employee', e.id]">
+      {{ e.lastName }}, {{ e.firstName }}
+    </a>
   </li>
 </ul>
