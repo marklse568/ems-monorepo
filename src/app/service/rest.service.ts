@@ -22,4 +22,37 @@ export class RestService {
         ),
     });
   }
+
+  getEmployee(id: number) {
+    return this.http.get<Employee>(`/backend/${id}`, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set(
+          'Authorization',
+          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
+        ),
+    });
+  }
+
+  addEmployee(employee: Employee) {
+    return this.http.post<Employee>('/backend', employee, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set(
+          'Authorization',
+          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
+        ),
+    });
+  }
+
+  editEmployee(employee: Employee) {
+    return this.http.put<Employee>(`/backend/${employee.id}`, employee, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set(
+          'Authorization',
+          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
+        ),
+    });
+  }
 }
