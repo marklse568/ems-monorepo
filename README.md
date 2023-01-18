@@ -7,6 +7,44 @@ Erstelle einen Fork dieses Projektes auf Github.
 * Docker https://docs.docker.com/get-docker/
 * Docker compose (bei Windows und Mac schon in Docker enthalten) https://docs.docker.com/compose/install/
 
+------------------------------------------------------------
+
+## Quickstart
+
+### Terminal im root Verzeichnis öffnen
+
+**Dependencies installieren**
+```bash
+npm install
+```
+
+**Docker cluster starten**
+
+```bash
+cd docker
+docker compose up
+```
+
+**Frontend starten**
+```bash
+npm run start
+```
+
+**Linting und Formatting**
+  
+```bash
+npm run lint:fix
+```
+
+**NAMING CONVENTIONS**
+
+Branches: 
+- `issue/nummer-stichwort`
+- `feature/feature-name`
+- `bugfix/bugfix-name`
+
+------------------------------------------------------------
+
 ### Terminal öffnen
 
 für alles gilt, im Terminal im Ordner docker sein
