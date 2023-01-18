@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { Employee } from '../model/Employee';
+import { Qualification } from '../model/Qualification';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class RestService {
   }
 
   fetchQualifications() {
-    return this.http.get<Employee[]>('/backend/qualifications', {
+    return this.http.get<Qualification[]>('/backend/qualifications', {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set(
