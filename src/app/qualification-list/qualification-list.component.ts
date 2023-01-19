@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { observable, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { EmployeeApiService } from '../service/employee-api.service';
 import { Qualification } from '../model/Qualification';
 import { Router } from '@angular/router';
@@ -18,15 +18,19 @@ export class QualificationListComponent implements OnInit {
     this.newName = '';
   }
 
-  async ngOnInit() {
-    this.qualifications$ = await this.restService.fetchQualifications();
+  ngOnInit() {
+    this.qualifications$ = this.restService.fetchQualifications();
   }
 
   save() {
     this.restService
       .addQualification(new Qualification(this.newName))
-      .then((observable) => {
-        observable.subscribe((q) => {});
+      .toPromise()
+      .then((q) => {
+        this.qualifications$ = this.restService.fetchQualifications();
+      })
+      .catch(() => {
+        console.error('failed to add qualification');
       });
   }
 }
