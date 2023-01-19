@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Employee } from '../model/Employee';
-import { RestService } from '../service/rest.service';
+import { EmployeeApiService } from '../service/employee-api.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,12 +11,12 @@ import { RestService } from '../service/rest.service';
 export class EmployeeListComponent {
   employees$: Observable<Employee[]>;
 
-  constructor(private restService: RestService) {
+  constructor(private restService: EmployeeApiService) {
     this.employees$ = of([]);
     this.fetchData();
   }
 
   fetchData() {
-    this.employees$ = this.restService.fetchEmployees();
+    this.employees$ = this.restService.getAllEmployees();
   }
 }
