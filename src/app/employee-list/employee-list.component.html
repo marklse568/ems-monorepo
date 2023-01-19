@@ -27,10 +27,7 @@
         <th>First Name</th>
       </thead>
       <tbody>
-        <tr
-          *ngFor="let e of employees$ | async"
-          [routerLink]="['/employee', e.id]"
-        >
+        <tr *ngFor="let e of employees" [routerLink]="['/employee', e.id]">
           <td>{{ e.id }}</td>
           <td>{{ e.lastName }}</td>
           <td>{{ e.firstName }}</td>
