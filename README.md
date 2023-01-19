@@ -133,5 +133,5 @@ Des Weiteren ist der Client mit der Bezeichnung employee-management-service-fron
 
 # Bugs
 
-## Firefox und angular-keycloak Inkompatiblität
-Bearer Token werden unter Firefox nicht automatisch an requests angefügt, da für Firefox ein Polyfill ausgeliefert wird und somit angular-keycloak die HTTP request nicht abfangen kann.
+## Firefox und keycloak-angular Inkompatiblität
+Bearer Token werden unter Firefox nicht automatisch an requests angefügt, da für Firefox ein Polyfill ausgeliefert wird und somit keycloak-angular die HTTP request nicht abfangen kann.
