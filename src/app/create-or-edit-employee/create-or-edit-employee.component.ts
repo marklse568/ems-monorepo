@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Employee } from '../model/Employee';
-import { RestService } from '../service/rest.service';
+import { EmployeeApiService } from '../service/employee-api.service';
 
 @Component({
   selector: 'app-create-or-edit-employee',
@@ -18,7 +18,7 @@ export class CreateOrEditEmployeeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private restService: RestService
+    private restService: EmployeeApiService
   ) {}
 
   ngOnInit() {

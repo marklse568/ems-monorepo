@@ -3,29 +3,24 @@ import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { Employee } from '../model/Employee';
 import { Qualification } from '../model/Qualification';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RestService {
+export class EmployeeApiService {
+  token: string | undefined;
   constructor(
     private keycloakService: KeycloakService,
     private http: HttpClient
-  ) {}
-
-  fetchEmployees() {
-    return this.http.get<Employee[]>('/backend/employees', {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set(
-          'Authorization',
-          `Bearer ${this.keycloakService.getKeycloakInstance().token}`
-        ),
+  ) {
+    keycloakService.getToken().then((t) => {
+      this.token = t;
     });
   }
 
-  fetchQualifications() {
-    return this.http.get<Qualification[]>('/backend/qualifications', {
+  fetchEmployees() {
+    return this.http.get<Employee[]>('/backend/employees', {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set(
@@ -68,6 +63,30 @@ export class RestService {
             'Authorization',
             `Bearer ${this.keycloakService.getKeycloakInstance().token}`
           ),
+      }
+    );
+  }
+
+  async fetchQualifications() {
+    console.log('1  =  ' + this.token);
+
+    return this.http.get<Qualification[]>('/backend/qualifications', {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${this.token}`),
+    });
+  }
+
+  async addQualification(qualification: Qualification) {
+    console.log('2  =  ' + this.token);
+
+    return this.http.post<Qualification>(
+      '/backend/qualifications',
+      qualification,
+      {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('Authorization', `Bearer ${this.token}`),
       }
     );
   }
