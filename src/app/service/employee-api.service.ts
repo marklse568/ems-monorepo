@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
 import { Employee } from '../model/Employee';
 import { Qualification } from '../model/Qualification';
 
@@ -8,12 +7,9 @@ import { Qualification } from '../model/Qualification';
   providedIn: 'root',
 })
 export class EmployeeApiService {
-  constructor(
-    private keycloakService: KeycloakService,
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  fetchEmployees() {
+  getAllEmployees() {
     return this.http.get<Employee[]>('/backend/employees');
   }
 
@@ -32,7 +28,7 @@ export class EmployeeApiService {
     );
   }
 
-  fetchQualifications() {
+  getAllQualifications() {
     return this.http.get<Qualification[]>('/backend/qualifications');
   }
 

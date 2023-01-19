@@ -17,6 +17,6 @@ export class EmployeeListComponent {
   }
 
   fetchData() {
-    this.employees$ = this.restService.fetchEmployees();
+    this.employees$ = this.restService.getAllEmployees();
   }
 }

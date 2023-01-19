@@ -19,7 +19,7 @@ export class QualificationListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.qualifications$ = this.restService.fetchQualifications();
+    this.qualifications$ = this.restService.getAllQualifications();
   }
 
   save() {
@@ -27,7 +27,7 @@ export class QualificationListComponent implements OnInit {
       .addQualification(new Qualification(this.newName))
       .toPromise()
       .then((q) => {
-        this.qualifications$ = this.restService.fetchQualifications();
+        this.qualifications$ = this.restService.getAllQualifications();
       })
       .catch(() => {
         console.error('failed to add qualification');
