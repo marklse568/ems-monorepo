@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Employee } from '../model/Employee';
 import { EmployeeApiService } from '../service/employee-api.service';
 
@@ -8,15 +7,18 @@ import { EmployeeApiService } from '../service/employee-api.service';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
 })
-export class EmployeeListComponent {
-  employees$: Observable<Employee[]>;
+export class EmployeeListComponent implements OnInit {
+  employees: Employee[] = [];
 
-  constructor(private restService: EmployeeApiService) {
-    this.employees$ = of([]);
-    this.fetchData();
+  constructor(private restService: EmployeeApiService) {}
+
+  ngOnInit() {
+    this.fetchEmployees();
   }
 
-  fetchData() {
-    this.employees$ = this.restService.getAllEmployees();
+  fetchEmployees() {
+    this.restService.getAllEmployees().subscribe((data) => {
+      this.employees = [...data];
+    });
   }
 }
