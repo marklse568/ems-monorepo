@@ -14,6 +14,7 @@ import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-
 import { ToastComponent } from './toast/toast.component';
 import { ToastService } from './service/toast.service';
 import { SkillSelectorComponent } from './skill-selector/skill-selector.component';
+import { AddSkillFormComponent } from './add-skill-form/add-skill-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SkillSelectorComponent } from './skill-selector/skill-selector.componen
     CreateOrEditEmployeeComponent,
     ToastComponent,
     SkillSelectorComponent,
+    AddSkillFormComponent,
   ],
   imports: [
     BrowserModule,

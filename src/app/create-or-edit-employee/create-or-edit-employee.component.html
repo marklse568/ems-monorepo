@@ -68,7 +68,10 @@
     </div>
     <div class="col-sm">
       <div class="mb-3">
-        <app-skill-selector></app-skill-selector>
+        <app-skill-selector
+          [selected]="employee.skillSet"
+          [employee]="employee"
+        ></app-skill-selector>
       </div>
     </div>
   </div>

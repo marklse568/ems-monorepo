@@ -48,7 +48,28 @@ export class EmployeeApiService {
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
-  handleError(error: HttpErrorResponse) {
+  addQualificationToEmployee(employee: Employee, qualification: Qualification) {
+    return this.http
+      .post<Employee>(
+        `/backend/employees/${employee.id}/qualifications`,
+        qualification
+      )
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+  removeQualificationFromEmployee(
+    employee: Employee,
+    qualification: Qualification
+  ) {
+    return this.http
+      .delete<Employee>(`/backend/employees/${employee.id}/qualifications`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: qualification,
+      })
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+  private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       this.toaster.show(
         'Error',

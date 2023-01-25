@@ -26,19 +26,9 @@
       </div>
     </li>
     <li>
-      <div class="d-flex p-2 gap-2">
-        <input
-          type="text"
-          class="form-control w-auto flex-grow-1"
-          placeholder="New skill name"
-          [(ngModel)]="newSkillName"
-          minlength="1"
-          maxlength="255"
-        />
-        <button class="btn btn-outline-primary" (click)="addNewSkill()"
-          >Add qualification</button
-        >
-      </div>
+      <app-add-skill-form
+        (skillAdded)="onSkillAdded($event)"
+      ></app-add-skill-form>
     </li>
   </ul>
 </div>
