@@ -10,6 +10,6 @@ export class NavbarComponent {
   constructor(private keycloakService: KeycloakService) {}
 
   logout() {
-    this.keycloakService.logout('http://localhost:4200');
+    this.keycloakService.logout(window.location.origin);
   }
 }
