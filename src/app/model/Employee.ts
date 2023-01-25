@@ -10,6 +10,6 @@ export class Employee {
     public city?: string,
     public phone?: string,
 
-    public qualifications?: Qualification[]
+    public qualifications: Qualification[] = []
   ) {}
 }

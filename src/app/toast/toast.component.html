@@ -1,8 +1,9 @@
-<div *ngIf="toast.visible" class="toasty" [ngClass]="toast.position">
+<div *ngIf="toast.visible" class="toasty rounded-2" [ngClass]="toast.position">
   <div class="toast-grid-container">
-    <div *ngIf="toast.type" class="indicator bg-{{ toast.type }}"> </div>
+    <div *ngIf="toast.type" class="indicator bg-{{ toast.type }} rounded-2">
+    </div>
 
-    <div class="error-title">{{ toast.title }}</div>
+    <div class="error-title px-2">{{ toast.title }}</div>
     <div class="error-message d-flex align-items-center">
       <div>{{ toast.message }}</div>
     </div>

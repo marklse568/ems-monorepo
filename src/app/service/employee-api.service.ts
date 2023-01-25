@@ -52,7 +52,7 @@ export class EmployeeApiService {
     if (error.status === 0) {
       this.toaster.show(
         'Error',
-        error.error,
+        error.error.message,
         4,
         ToastType.Danger,
         ToastPosition.TopRight
@@ -61,7 +61,7 @@ export class EmployeeApiService {
     } else if (error.status === 400) {
       this.toaster.show(
         'Bad Request',
-        error.error,
+        error.error.message,
         4,
         ToastType.Danger,
         ToastPosition.TopRight
@@ -70,7 +70,7 @@ export class EmployeeApiService {
     } else if (error.status === 401) {
       this.toaster.show(
         'Unauthorized',
-        error.error,
+        error.error.message,
         4,
         ToastType.Danger,
         ToastPosition.TopRight
@@ -79,7 +79,7 @@ export class EmployeeApiService {
     } else if (error.status === 404) {
       this.toaster.show(
         'Not Found',
-        error.error,
+        error.error.message,
         4,
         ToastType.Danger,
         ToastPosition.TopRight
@@ -88,7 +88,7 @@ export class EmployeeApiService {
     } else if (error.status === 500) {
       this.toaster.show(
         'Internal Server Error',
-        error.error,
+        error.error.message,
         4,
         ToastType.Danger,
         ToastPosition.TopRight
@@ -97,7 +97,7 @@ export class EmployeeApiService {
     } else {
       this.toaster.show(
         'Error',
-        error.error,
+        error.error.message,
         5,
         ToastType.Danger,
         ToastPosition.TopRight

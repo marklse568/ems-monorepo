@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-or-edit-employee.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastService } from './service/toast.service';
+import { SkillSelectorComponent } from './skill-selector/skill-selector.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToastService } from './service/toast.service';
     NavbarComponent,
     CreateOrEditEmployeeComponent,
     ToastComponent,
+    SkillSelectorComponent,
   ],
   imports: [
     BrowserModule,
