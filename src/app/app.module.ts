@@ -11,6 +11,8 @@ import { initializeKeycloak } from './security/keycloak-init.factory';
 import { QualificationListComponent } from './qualification-list/qualification-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-or-edit-employee.component';
+import { ToastComponent } from './toast/toast.component';
+import { ToastService } from './service/toast.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-
     QualificationListComponent,
     NavbarComponent,
     CreateOrEditEmployeeComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-
       multi: true,
       deps: [KeycloakService],
     },
+    ToastService,
   ],
   bootstrap: [AppComponent],
 })

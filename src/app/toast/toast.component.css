@@ -1,0 +1,56 @@
+.position-top-right {
+  top: 2%;
+  right: 2%;
+}
+.position-top-left {
+  top: 2%;
+  left: 2%;
+}
+.position-bottom-right {
+  bottom: 2%;
+  right: 2%;
+}
+.position-center {
+  top: 50%;
+  left: 50%;
+}
+.toasty {
+  background-color: aliceblue;
+  width: 350px;
+  position: absolute;
+  z-index: 9999;
+}
+.toasty .toast-grid-container {
+  display: grid;
+  grid-template-areas: 'indicator error-title btn-close' 'indicator error-message error-message';
+  grid-template-columns: 20% 70% 10%;
+  grid-template-rows: 50% 50%;
+}
+.toasty .toast-grid-container .indicator {
+  grid-area: indicator;
+}
+.toasty .toast-grid-container .error-title {
+  grid-area: error-title;
+  padding: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.toasty .toast-grid-container .error-message {
+  grid-area: error-message;
+  padding: 3px 8px;
+  font-size: small;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.toasty .toast-grid-container .btn-close {
+  grid-area: btn-close;
+}
+.toasty .toast-grid-container .btn-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,12 @@
+<div *ngIf="toast.visible" class="toasty" [ngClass]="toast.position">
+  <div class="toast-grid-container">
+    <div *ngIf="toast.type" class="indicator bg-{{ toast.type }}"> </div>
+
+    <div class="error-title">{{ toast.title }}</div>
+    <div class="error-message d-flex align-items-center">
+      <div>{{ toast.message }}</div>
+    </div>
+
+    <div class="btn-close pt-3" (click)="close()"></div>
+  </div>
+</div>
