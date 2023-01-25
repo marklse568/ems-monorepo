@@ -48,6 +48,12 @@ export class EmployeeApiService {
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
+  deleteEmployee(employee: Employee) {
+    return this.http
+      .delete(`/backend/employees/${employee.id}`)
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+
   handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       this.toaster.show(
@@ -109,9 +115,5 @@ export class EmployeeApiService {
     return throwError(
       () => new Error('Something bad happened; please try again later.')
     );
-  }
-
-  deleteEmployee(employee: Employee) {
-    return this.http.delete(`/backend/employees/${employee.id}`);
   }
 }
