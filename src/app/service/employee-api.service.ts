@@ -5,70 +5,84 @@ import { Employee } from '../model/Employee';
 import { Qualification } from '../model/Qualification';
 import { ToastPosition, ToastType } from '../model/Toast';
 import { ToastService } from './toast.service';
+import { EmployeeQualifications } from '../model/EmployeeQualifications';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeApiService {
+  private BASE_URL = '/backend';
   constructor(private http: HttpClient, private toaster: ToastService) {}
 
   getAllEmployees() {
     return this.http
-      .get<Employee[]>('/backend/employees')
+      .get<Employee[]>(this.BASE_URL + '/employees')
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
   getEmployee(id: number) {
     return this.http
-      .get<Employee>(`/backend/employees/${id}`)
+      .get<Employee>(this.BASE_URL + `/employees/${id}`)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
   addEmployee(employee: Employee) {
     return this.http
-      .post<Employee>('/backend/employees', employee)
+      .post<Employee>(this.BASE_URL + '/employees', employee)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
   editEmployee(employee: Employee) {
     return this.http
-      .put<Employee>(`/backend/employees/${employee.id}`, employee)
+      .put<Employee>(this.BASE_URL + `/employees/${employee.id}`, employee)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
   getAllQualifications() {
     return this.http
-      .get<Qualification[]>('/backend/qualifications')
+      .get<Qualification[]>(this.BASE_URL + '/qualifications')
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
   addQualification(qualification: Qualification) {
     return this.http
-      .post<Qualification>('/backend/qualifications', qualification)
+      .post<Qualification>(this.BASE_URL + '/qualifications', qualification)
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
-  addQualificationToEmployee(employee: Employee, qualification: Qualification) {
+  addQualificationToEmployee(employeeId: number, qualification: Qualification) {
     return this.http
-      .post<Employee>(
-        `/backend/employees/${employee.id}/qualifications`,
+      .post<EmployeeQualifications>(
+        this.BASE_URL + `/employees/${employeeId}/qualifications`,
         qualification
       )
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
   removeQualificationFromEmployee(
-    employee: Employee,
+    employeeId: number,
     qualification: Qualification
   ) {
     return this.http
-      .delete<Employee>(`/backend/employees/${employee.id}/qualifications`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: qualification,
-      })
+      .delete<EmployeeQualifications>(
+        this.BASE_URL + `/employees/${employeeId}/qualifications`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: qualification,
+        }
+      )
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
+
+  getAllQualificationsOfEmployee(employeeId: number) {
+    return this.http
+      .get<EmployeeQualifications>(
+        this.BASE_URL + `/employees/${employeeId}/qualifications`
+      )
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       this.toaster.show(

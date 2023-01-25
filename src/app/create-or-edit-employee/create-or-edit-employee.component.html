@@ -69,8 +69,8 @@
     <div class="col-sm">
       <div class="mb-3">
         <app-skill-selector
-          [selected]="employee.skillSet"
-          [employee]="employee"
+          (selectionChanged)="onSkillSetChanged($event)"
+          [employeeId]="id"
         ></app-skill-selector>
       </div>
     </div>

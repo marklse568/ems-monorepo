@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Qualification } from '../model/Qualification';
 import { EmployeeApiService } from '../service/employee-api.service';
-import { Employee } from '../model/Employee';
 
 @Component({
   selector: 'app-skill-selector',
@@ -10,9 +9,9 @@ import { Employee } from '../model/Employee';
 })
 export class SkillSelectorComponent implements OnInit {
   @Input()
+  employeeId? = 0;
+
   selected: string[] = [];
-  @Input()
-  employee: Employee | null = null;
 
   @Output()
   selectionChanged = new EventEmitter<string[]>();
@@ -29,6 +28,15 @@ export class SkillSelectorComponent implements OnInit {
     this.restService.getAllQualifications().subscribe((data) => {
       this.options = [...data];
     });
+
+    if (this.employeeId) {
+      this.restService
+        .getAllQualificationsOfEmployee(this.employeeId)
+        .subscribe((e) => {
+          this.selected = e.skillSet.map((s) => s.skill);
+          this.selectionChanged.emit(this.selected);
+        });
+    }
   }
 
   isSelected(index: number) {
@@ -41,15 +49,17 @@ export class SkillSelectorComponent implements OnInit {
 
   addToSelected(index: number) {
     const newQualification = this.options[index];
-    if (this.employee) {
+    if (this.employeeId) {
       this.restService
-        .addQualificationToEmployee(this.employee, newQualification)
+        .addQualificationToEmployee(this.employeeId, newQualification)
         .subscribe((e) => {
-          this.employee = e;
+          this.selected = e.skillSet.map((s) => s.skill);
+          this.selectionChanged.emit(this.selected);
         });
+    } else {
+      this.selected.push(newQualification.skill);
+      this.selectionChanged.emit(this.selected);
     }
-    this.selected.push(newQualification.skill);
-    this.selectionChanged.emit(this.selected);
   }
 
   removeFromSelected(index: number) {
@@ -62,16 +72,17 @@ export class SkillSelectorComponent implements OnInit {
       return;
     }
 
-    if (this.employee) {
+    if (this.employeeId) {
       this.restService
-        .removeQualificationFromEmployee(this.employee, this.options[index])
+        .removeQualificationFromEmployee(this.employeeId, this.options[index])
         .subscribe((e) => {
-          this.employee = e;
+          this.selected = e.skillSet.map((s) => s.skill);
+          this.selectionChanged.emit(this.selected);
         });
+    } else {
+      this.selected.splice(matchedIndex, 1);
+      this.selectionChanged.emit(this.selected);
     }
-
-    this.selected.splice(matchedIndex, 1);
-    this.selectionChanged.emit(this.selected);
   }
 
   onSkillAdded(qualification: Qualification) {
