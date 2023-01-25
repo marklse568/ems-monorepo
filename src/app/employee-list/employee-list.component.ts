@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../model/Employee';
 import { EmployeeApiService } from '../service/employee-api.service';
-import {firstValueFrom} from "rxjs";
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-employee-list',
