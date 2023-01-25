@@ -1,6 +1,12 @@
 <h1 class="my-4">Qualifications Overview</h1>
 <div class="row gap-2">
-  <input class="col-sm form-control" [(ngModel)]="newName" />
+  <input
+    type="text"
+    maxlength="255"
+    minlength="1"
+    class="col-sm form-control"
+    [(ngModel)]="newName"
+  />
   <button class="col-sm btn btn-outline-primary" (click)="save()"
     >Add qualification</button
   >
