@@ -24,6 +24,7 @@ export class QualificationListComponent implements OnInit {
       .addQualification(new Qualification(this.newName))
       .subscribe((data) => {
         this.qualifications = [...this.qualifications, data];
+        this.newName = '';
       });
   }
 }
