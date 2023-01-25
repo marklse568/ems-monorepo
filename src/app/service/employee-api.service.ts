@@ -38,4 +38,8 @@ export class EmployeeApiService {
       qualification
     );
   }
+
+  deleteEmployee(employee: Employee) {
+    return this.http.delete(`/backend/employees/${employee.id}`);
+  }
 }
