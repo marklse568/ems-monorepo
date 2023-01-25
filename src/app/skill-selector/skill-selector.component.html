@@ -1,0 +1,44 @@
+<label for="skillSelector" class="form-label">Qualifications</label>
+<div class="dropdown" id="skill" xmlns="http://www.w3.org/1999/html">
+  <button
+    id="skillSelector"
+    class="btn btn-secondary dropdown-toggle w-100"
+    type="button"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="outside"
+    aria-expanded="false"
+  >
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu w-100">
+    <li
+      *ngFor="let option of options; index as i"
+      class="dropdown-item"
+      (click)="isSelected(i) ? removeFromSelected(i) : addToSelected(i)"
+    >
+      <div class="form-check">
+        <label class="form-check-label">{{ option.skill }}</label>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [checked]="isSelected(i)"
+        />
+      </div>
+    </li>
+    <li>
+      <div class="d-flex p-2 gap-2">
+        <input
+          type="text"
+          class="form-control w-auto flex-grow-1"
+          placeholder="New skill name"
+          [(ngModel)]="newSkillName"
+          minlength="1"
+          maxlength="255"
+        />
+        <button class="btn btn-outline-primary" (click)="addNewSkill()"
+          >Add new skill</button
+        >
+      </div>
+    </li>
+  </ul>
+</div>
