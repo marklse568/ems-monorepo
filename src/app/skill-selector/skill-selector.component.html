@@ -1,16 +1,14 @@
-<label for="skillSelector" class="form-label">Qualifications</label>
-<div class="dropdown" id="skill" xmlns="http://www.w3.org/1999/html">
+<div class="dropdown d-inline" id="skill" xmlns="http://www.w3.org/1999/html">
   <button
-    id="skillSelector"
-    class="btn btn-secondary dropdown-toggle w-100"
+    class="btn btn-secondary dropdown-toggle {{ inlined ? 'w-auto' : 'w-100' }}"
     type="button"
     data-bs-toggle="dropdown"
     data-bs-auto-close="outside"
     aria-expanded="false"
   >
-    Dropdown button
+    {{ dropdownText }}
   </button>
-  <ul class="dropdown-menu w-100">
+  <ul class="dropdown-menu {{ inlined ? 'w-auto' : 'w-100' }}">
     <li
       *ngFor="let option of options; index as i"
       class="dropdown-item"
@@ -27,6 +25,7 @@
     </li>
     <li>
       <app-add-skill-form
+        *ngIf="this.employeeId"
         (skillAdded)="onSkillAdded($event)"
       ></app-add-skill-form>
     </li>

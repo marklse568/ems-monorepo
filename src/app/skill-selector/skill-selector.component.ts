@@ -9,7 +9,13 @@ import { EmployeeApiService } from '../service/employee-api.service';
 })
 export class SkillSelectorComponent implements OnInit {
   @Input()
+  inlined?: string | undefined;
+
+  @Input()
   employeeId? = 0;
+
+  @Input()
+  dropdownText = '';
 
   selected: string[] = [];
 
@@ -22,6 +28,7 @@ export class SkillSelectorComponent implements OnInit {
 
   ngOnInit() {
     this.fetchQualifications();
+    console.log(this.inlined);
   }
 
   fetchQualifications() {

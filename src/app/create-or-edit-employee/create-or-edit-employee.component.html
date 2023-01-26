@@ -68,7 +68,9 @@
     </div>
     <div class="col-sm">
       <div class="mb-3">
+        <label class="form-label">Qualifications</label>
         <app-skill-selector
+          dropdownText="Edit qualifications"
           (selectionChanged)="onSkillSetChanged($event)"
           [employeeId]="id"
         ></app-skill-selector>

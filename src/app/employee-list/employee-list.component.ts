@@ -10,6 +10,8 @@ import { EmployeeApiService } from '../service/employee-api.service';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
 
+  filters: string[] = [];
+
   constructor(private restService: EmployeeApiService) {}
 
   ngOnInit() {
@@ -20,5 +22,9 @@ export class EmployeeListComponent implements OnInit {
     this.restService.getAllEmployees().subscribe((data) => {
       this.employees = [...data];
     });
+  }
+  onFilterChanged(filters: string[]) {
+    // update display collection here or smth
+    this.filters = filters;
   }
 }
