@@ -19,10 +19,10 @@
       <tbody>
         <ng-container *ngFor="let e of employees; index as i">
           <ng-container *ngIf="shouldShowEmployee(i)">
-            <tr [routerLink]="['/employee', e.id]">
-              <td>{{ e.id }}</td>
-              <td>{{ e.lastName }}</td>
-              <td>{{ e.firstName }}</td>
+            <tr>
+              <td [routerLink]="['/employee', e.id]">{{ e.id }}</td>
+              <td [routerLink]="['/employee', e.id]">{{ e.lastName }}</td>
+              <td [routerLink]="['/employee', e.id]">{{ e.firstName }}</td>
               <td>
                 <button class="btn float-end" (click)="deleteEmployee(e)">
                   <svg
