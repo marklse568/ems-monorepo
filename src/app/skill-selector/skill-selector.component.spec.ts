@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkillSelectorComponent } from './skill-selector.component';
 
-describe('DropdownComponent', () => {
+describe('SkillSelectorComponent', () => {
   let component: SkillSelectorComponent;
   let fixture: ComponentFixture<SkillSelectorComponent>;
 
