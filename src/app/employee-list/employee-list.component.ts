@@ -24,6 +24,12 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  deleteEmployee(employee: Employee) {
+    this.restService.deleteEmployee(employee).subscribe(() => {
+      this.employees = this.employees.filter((e) => e.id !== employee.id);
+    });
+  }
+
   shouldShowEmployee(index: number) {
     if (this.filters.length === 0) {
       return true;
@@ -35,7 +41,6 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onFilterChanged(filters: string[]) {
-    // update display collection here or smth
     this.filters = filters;
   }
 }

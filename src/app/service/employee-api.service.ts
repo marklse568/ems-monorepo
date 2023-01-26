@@ -38,6 +38,12 @@ export class EmployeeApiService {
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
+  deleteEmployee(employee: Employee) {
+    return this.http
+      .delete(`/backend/employees/${employee.id}`)
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+
   getAllQualifications() {
     return this.http
       .get<Qualification[]>(this.BASE_URL + '/qualifications')
@@ -83,7 +89,7 @@ export class EmployeeApiService {
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       this.toaster.show(
         'Error',
