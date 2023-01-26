@@ -2,7 +2,7 @@
 <app-add-skill-form (skillAdded)="onSkillAdded($event)"></app-add-skill-form>
 <ul class="list-group my-3">
   <li class="list-group-item" *ngFor="let qualification of qualifications">
-    <span class="">{{ qualification.skill }}</span>
+    <span>{{ qualification.skill }}</span>
     <button
       type="button"
       class="p-0 btn float-end"
