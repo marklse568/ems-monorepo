@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Employee } from '../model/Employee';
@@ -88,6 +92,16 @@ export class EmployeeApiService {
       .get<EmployeeQualifications>(
         `${this.BASE_URL}/employees/${employeeId}/qualifications`
       )
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+
+  deleteQualification(qualification: Qualification) {
+    const body = { skill: qualification.skill };
+    return this.http
+      .delete<Qualification>('/backend/qualifications', {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        body: body,
+      })
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }
 

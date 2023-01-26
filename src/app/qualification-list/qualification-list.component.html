@@ -1,7 +1,14 @@
 <h1 class="my-4">Qualifications Overview</h1>
 <app-add-skill-form (skillAdded)="onSkillAdded($event)"></app-add-skill-form>
 <ul class="list-group mt-3">
-  <li class="list-group-item" *ngFor="let e of qualifications">
-    {{ e.skill }}
+  <li class="list-group-item" *ngFor="let qualification of qualifications">
+    <span class="">{{ qualification.skill }}</span>
+    <button
+      type="button"
+      class="p-0 btn float-end"
+      (click)="onDelete(qualification)"
+    >
+      <img src="../../assets/images/trash.png" alt="trash icon" />
+    </button>
   </li>
 </ul>

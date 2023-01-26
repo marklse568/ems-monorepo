@@ -21,4 +21,12 @@ export class QualificationListComponent implements OnInit {
   onSkillAdded(qualification: Qualification) {
     this.qualifications.push(qualification);
   }
+
+  onDelete(qualification: Qualification) {
+    this.restService.deleteQualification(qualification).subscribe(() => {
+      this.qualifications = this.qualifications.filter(
+        (q) => q.skill !== qualification.skill
+      );
+    });
+  }
 }
