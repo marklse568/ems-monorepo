@@ -23,6 +23,17 @@ export class EmployeeListComponent implements OnInit {
       this.employees = [...data];
     });
   }
+
+  shouldShowEmployee(index: number) {
+    if (this.filters.length === 0) {
+      return true;
+    }
+
+    const target = this.employees[index];
+    const match = this.filters.find((f) => target.skillSet.includes(f));
+    return !!match;
+  }
+
   onFilterChanged(filters: string[]) {
     // update display collection here or smth
     this.filters = filters;

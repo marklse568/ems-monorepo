@@ -31,7 +31,6 @@ export class SkillSelectorComponent implements OnInit {
 
   ngOnInit() {
     this.fetchQualifications();
-    console.log(this.inlined);
   }
 
   fetchQualifications() {
