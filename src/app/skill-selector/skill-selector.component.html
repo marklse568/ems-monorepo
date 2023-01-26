@@ -25,10 +25,12 @@
       </div>
     </li>
     <li>
-      <app-add-skill-form
-        *ngIf="this.allowCreation"
-        (skillAdded)="onSkillAdded($event)"
-      ></app-add-skill-form>
+      <div class="px-3">
+        <app-add-skill-form
+          *ngIf="this.allowCreation"
+          (skillAdded)="onSkillAdded($event)"
+        ></app-add-skill-form>
+      </div>
     </li>
   </ul>
 </div>
