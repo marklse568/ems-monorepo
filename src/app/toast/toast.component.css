@@ -40,7 +40,7 @@
   padding: 3px 8px;
   font-size: small;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word;
 }
 .toasty .toast-grid-container .btn-close {
   grid-area: btn-close;

@@ -9,7 +9,6 @@ import { Qualification } from '../model/Qualification';
 })
 export class QualificationListComponent implements OnInit {
   qualifications: Qualification[] = [];
-  newName = '';
 
   constructor(private restService: EmployeeApiService) {}
 
@@ -19,11 +18,7 @@ export class QualificationListComponent implements OnInit {
     });
   }
 
-  save() {
-    this.restService
-      .addQualification(new Qualification(this.newName))
-      .subscribe((data) => {
-        this.qualifications = [...this.qualifications, data];
-      });
+  onSkillAdded(qualification: Qualification) {
+    this.qualifications.push(qualification);
   }
 }

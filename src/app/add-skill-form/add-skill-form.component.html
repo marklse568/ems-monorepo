@@ -1,0 +1,13 @@
+<div class="d-flex p-2 gap-2">
+  <input
+    type="text"
+    class="form-control w-auto flex-grow-1"
+    placeholder="New skill name"
+    [(ngModel)]="newName"
+    minlength="1"
+    maxlength="255"
+  />
+  <button class="btn btn-outline-primary" (click)="addNewSkill()"
+    >Add qualification</button
+  >
+</div>

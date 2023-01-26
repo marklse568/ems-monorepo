@@ -1,0 +1,34 @@
+<div class="dropdown d-inline" id="skill" xmlns="http://www.w3.org/1999/html">
+  <button
+    class="btn btn-secondary dropdown-toggle {{ inlined ? 'w-auto' : 'w-100' }}"
+    type="button"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="outside"
+    aria-expanded="false"
+  >
+    {{ dropdownText }}
+    {{ selected.length ? '(' + selected.length + ' aktiv)' : '' }}
+  </button>
+  <ul class="dropdown-menu w-100">
+    <li
+      *ngFor="let option of options; index as i"
+      class="dropdown-item"
+      (click)="isSelected(i) ? removeFromSelected(i) : addToSelected(i)"
+    >
+      <div class="form-check">
+        <label class="form-check-label">{{ option.skill }}</label>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [checked]="isSelected(i)"
+        />
+      </div>
+    </li>
+    <li>
+      <app-add-skill-form
+        *ngIf="this.allowCreation"
+        (skillAdded)="onSkillAdded($event)"
+      ></app-add-skill-form>
+    </li>
+  </ul>
+</div>

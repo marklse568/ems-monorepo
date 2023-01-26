@@ -10,6 +10,8 @@ import { EmployeeApiService } from '../service/employee-api.service';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
 
+  filters: string[] = [];
+
   constructor(private restService: EmployeeApiService) {}
 
   ngOnInit() {
@@ -26,5 +28,18 @@ export class EmployeeListComponent implements OnInit {
     this.restService.deleteEmployee(employee).subscribe(() => {
       this.employees = this.employees.filter((e) => e.id !== employee.id);
     });
+  }
+
+  shouldShowEmployee(index: number) {
+    if (this.filters.length === 0) {
+      return true;
+    }
+
+    const targetSkills = this.employees[index].skillSet;
+    return this.filters.some((f) => targetSkills.includes(f)); // O(n²) is life
+  }
+
+  onFilterChanged(filters: string[]) {
+    this.filters = filters;
   }
 }

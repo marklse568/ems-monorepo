@@ -1,10 +1,5 @@
 <h1 class="my-4">Qualifications Overview</h1>
-<div class="row gap-2">
-  <input class="col-sm form-control" [(ngModel)]="newName" />
-  <button class="col-sm btn btn-outline-primary" (click)="save()"
-    >Add qualification</button
-  >
-</div>
+<app-add-skill-form (skillAdded)="onSkillAdded($event)"></app-add-skill-form>
 <ul class="list-group mt-3">
   <li class="list-group-item" *ngFor="let e of qualifications">
     {{ e.skill }}

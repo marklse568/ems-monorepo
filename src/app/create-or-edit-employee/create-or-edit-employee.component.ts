@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Employee } from '../model/Employee';
 import { EmployeeApiService } from '../service/employee-api.service';
 
@@ -13,7 +12,6 @@ export class CreateOrEditEmployeeComponent implements OnInit {
   id = 0;
   isEditMode = false;
   employee: Employee = new Employee();
-  routeSubscription: Subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +20,7 @@ export class CreateOrEditEmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.routeSubscription = this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.id = +params['id'];
       if (this.id) {
         this.isEditMode = true;
@@ -45,5 +43,9 @@ export class CreateOrEditEmployeeComponent implements OnInit {
         this.router.navigate(['/employee']);
       });
     }
+  }
+
+  onSkillSetChanged(skillSet: string[]) {
+    this.employee.skillSet = skillSet;
   }
 }
