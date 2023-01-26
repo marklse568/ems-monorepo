@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CreateOrEditEmployeeComponent } from './create-or-edit-employee/create-or-edit-employee.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastService } from './service/toast.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ToastService } from './service/toast.service';
     AppRoutingModule,
     KeycloakAngularModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [
     {
