@@ -8,9 +8,8 @@ describe('AddSkillFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddSkillFormComponent ]
-    })
-    .compileComponents();
+      declarations: [AddSkillFormComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AddSkillFormComponent);
     component = fixture.componentInstance;
