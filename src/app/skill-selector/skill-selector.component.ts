@@ -12,6 +12,9 @@ export class SkillSelectorComponent implements OnInit {
   inlined?: string | undefined;
 
   @Input()
+  allowCreation?: string | undefined;
+
+  @Input()
   employeeId? = 0;
 
   @Input()
