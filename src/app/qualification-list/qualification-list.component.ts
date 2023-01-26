@@ -5,7 +5,6 @@ import { Qualification } from '../model/Qualification';
 @Component({
   selector: 'app-qualification-list',
   templateUrl: './qualification-list.component.html',
-  styleUrls: ['./qualification-list.component.css'],
 })
 export class QualificationListComponent implements OnInit {
   qualifications: Qualification[] = [];

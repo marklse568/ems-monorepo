@@ -7,7 +7,6 @@ import { ToastService } from '../service/toast.service';
 @Component({
   selector: 'app-add-skill-form',
   templateUrl: './add-skill-form.component.html',
-  styleUrls: ['./add-skill-form.component.css'],
 })
 export class AddSkillFormComponent {
   @Output()

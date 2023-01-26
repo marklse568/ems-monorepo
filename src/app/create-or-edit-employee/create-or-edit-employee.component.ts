@@ -6,7 +6,6 @@ import { EmployeeApiService } from '../service/employee-api.service';
 @Component({
   selector: 'app-create-or-edit-employee',
   templateUrl: './create-or-edit-employee.component.html',
-  styleUrls: ['./create-or-edit-employee.component.css'],
 })
 export class CreateOrEditEmployeeComponent implements OnInit {
   id = 0;
