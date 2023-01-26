@@ -50,10 +50,7 @@ export class SkillSelectorComponent implements OnInit {
 
   isSelected(index: number) {
     const targetSkill = this.options[index].skill;
-    const match = this.selected.find((skill: string) => {
-      return skill === targetSkill;
-    });
-    return !!match;
+    return this.selected.includes(targetSkill);
   }
 
   addToSelected(index: number) {
@@ -73,9 +70,9 @@ export class SkillSelectorComponent implements OnInit {
 
   removeFromSelected(index: number) {
     const targetSkill = this.options[index].skill;
-    const matchedIndex = this.selected.findIndex((skill: string) => {
-      return skill === targetSkill;
-    });
+    const matchedIndex = this.selected.findIndex(
+      (skill: string) => skill === targetSkill
+    );
 
     if (matchedIndex === -1) {
       return;

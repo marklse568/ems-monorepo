@@ -36,8 +36,7 @@ export class EmployeeListComponent implements OnInit {
     }
 
     const targetSkills = this.employees[index].skillSet;
-    const match = this.filters.find((f) => targetSkills.includes(f)); // O(n²) is life
-    return !!match;
+    return this.filters.some((f) => targetSkills.includes(f)); // O(n²) is life
   }
 
   onFilterChanged(filters: string[]) {

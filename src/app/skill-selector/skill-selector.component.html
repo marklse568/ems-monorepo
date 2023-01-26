@@ -7,7 +7,7 @@
     aria-expanded="false"
   >
     {{ dropdownText }}
-    {{ selected.length > 0 ? '(' + selected.length + ' aktiv)' : '' }}
+    {{ selected.length ? '(' + selected.length + ' aktiv)' : '' }}
   </button>
   <ul class="dropdown-menu w-100">
     <li
