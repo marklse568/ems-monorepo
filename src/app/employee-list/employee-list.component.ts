@@ -29,8 +29,8 @@ export class EmployeeListComponent implements OnInit {
       return true;
     }
 
-    const target = this.employees[index];
-    const match = this.filters.find((f) => target.skillSet.includes(f));
+    const targetSkills = this.employees[index].skillSet;
+    const match = this.filters.find((f) => targetSkills.includes(f)); // O(n²) is life
     return !!match;
   }
 
