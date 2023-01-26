@@ -1,6 +1,6 @@
 <h1 class="my-4">Qualifications Overview</h1>
 <app-add-skill-form (skillAdded)="onSkillAdded($event)"></app-add-skill-form>
-<ul class="list-group mt-3">
+<ul class="list-group my-3">
   <li class="list-group-item" *ngFor="let qualification of qualifications">
     <span class="">{{ qualification.skill }}</span>
     <button
