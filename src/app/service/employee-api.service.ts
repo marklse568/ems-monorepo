@@ -10,6 +10,7 @@ import { Qualification } from '../model/Qualification';
 import { ToastPosition, ToastType } from '../model/Toast';
 import { ToastService } from './toast.service';
 import { EmployeeQualifications } from '../model/EmployeeQualifications';
+import { EmployeesByQualification } from '../model/EmployeesByQualification';
 
 @Injectable({
   providedIn: 'root',
@@ -91,6 +92,14 @@ export class EmployeeApiService {
     return this.http
       .get<EmployeeQualifications>(
         `${this.BASE_URL}/employees/${employeeId}/qualifications`
+      )
+      .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+  }
+
+  getAllEmployeesByQualification(qualification: Qualification) {
+    return this.http
+      .get<EmployeesByQualification>(
+        `${this.BASE_URL}/qualifications/${qualification.skill}/employees`
       )
       .pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
   }

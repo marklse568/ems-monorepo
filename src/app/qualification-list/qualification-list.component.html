@@ -2,13 +2,43 @@
 <app-add-skill-form (skillAdded)="onSkillAdded($event)"></app-add-skill-form>
 <ul class="list-group my-3">
   <li class="list-group-item" *ngFor="let qualification of qualifications">
-    <span>{{ qualification.skill }}</span>
-    <button
-      type="button"
-      class="p-0 btn float-end"
-      (click)="onDelete(qualification)"
+    <span
+      class="fs-5 {{
+        selectedQualification === qualification.skill ? 'fw-bold' : ''
+      }}"
+      (click)="onShowEmployees(qualification)"
+      role="button"
+      >{{ qualification.skill }}</span
     >
-      <img src="../../assets/images/trash.png" alt="trash icon" />
-    </button>
+    <div class="float-end">
+      <button
+        type="button"
+        class="p-0 btn me-2"
+        (click)="onShowEmployees(qualification)"
+      >
+        <img src="../../assets/images/person-list.png" alt="person list icon" />
+      </button>
+      <button type="button" class="p-0 btn" (click)="onDelete(qualification)">
+        <img src="../../assets/images/trash.png" alt="trash icon" />
+      </button>
+    </div>
+    <div *ngIf="selectedQualification === qualification.skill">
+      <ul>
+        <ng-container
+          *ngFor="let employee of employeesByQualification?.employees"
+        >
+          <li>
+            <a class="py-2 text-dark" [routerLink]="['/employee', employee.id]">
+              <span>{{ employee.firstName }} {{ employee.lastName }}</span>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+      <div *ngIf="!employeesByQualification?.employees?.length">
+        <span class="text-muted" style="font-size: 0.9rem"
+          >No employees found for given skill</span
+        >
+      </div>
+    </div>
   </li>
 </ul>
